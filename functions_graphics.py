@@ -1,10 +1,10 @@
 from tkinter import *
 import random, time
 
-func = "x**2 / 10"
-#func = input("f(x) = ")
+#func = "sin(x)"
+func = input("f(x) = ")
 
-foo_s = "import math, random\n" +\
+foo_s = "from math import *\n" +\
 	"\n\ndef f(x):\n\ttry:\n\n\t\treturn " + func +\
 	"\n\texcept ZeroDivisionError:\n\t\treturn None"
 
@@ -86,7 +86,7 @@ def drawLines():
 
 
 
-def go(func, line_w=2):
+def go(func, f=False):
 
 	lastY = 0
 
@@ -105,12 +105,13 @@ def go(func, line_w=2):
 		col = '#000000' #color()
 
 		if lastY != None:
-			canvas.create_line(x - 1, lastY, x, y, fill = col, width=line_w)
+			canvas.create_line(x - 1, lastY, x, y, fill = col, width=2)
 
 		lastY = y
 
 		#time.sleep(0)
-		root.update()
+		if f:
+			root.update()
 
 
 def resizePlus(e):
@@ -151,7 +152,7 @@ canvas.pack()
 
 
 drawLines()
-go(foo.f)
+go(foo.f, True)
 
 
 
